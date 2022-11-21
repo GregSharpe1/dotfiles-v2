@@ -1,0 +1,7 @@
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+
+alias vimwriter='nvim -c ":Goyo" -c ":Limelight"'
+alias vimw='nvim -c ":Goyo" -c ":Limelight"'
+alias vw='nvim -c ":Goyo" -c ":Limelight"'

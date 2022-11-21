@@ -1,0 +1,44 @@
+alias terraform="/usr/bin/terraform12"
+alias tf="terraform"
+alias tfi="terraform init"
+alias tfp="terraform plan"
+alias tfa="terraform apply"
+alias tfv="terraform validate"
+alias tfu="terraform force-unlock"
+alias tfr="terraform refresh"
+
+# Workspace
+alias tfw="terraform workspace"
+alias tfwl="terraform workspace list"
+alias tfwn="terraform workspace new"
+alias tfwd="terraform workspace delete"
+alias tfws="terraform workspace select"
+
+# State
+alias tfs="terraform state"
+alias tfsl="terraform state list"
+alias tfsr="terraform state remove"
+alias tfsm="terraform state move"
+alias tfspl="terraform state pull"
+alias tfsph="terraform state push"
+alias tfss="terraform state show"
+
+# Nielsen Terraform wrapper
+alias ntf="nielsen-tf"
+
+# Helpers
+terraform-repo-layout() {
+  # terraform-repo-layout ./terraform
+
+  if [ -z "${1}" ];
+  then
+    echo "Please specify a dir to create"
+    exit 0
+  else
+    DIR="${1}"
+  fi
+
+  mkdir -p "${DIR}"
+  touch "${DIR}"/main.tf "${DIR}"/variables.tf "${DIR}"/outputs.tf "${DIR}"/versions.tf
+}
+

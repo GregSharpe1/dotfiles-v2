@@ -1,0 +1,10 @@
+#virtualenv dynamic aliases
+if [ -d $HOME/.venv ]; then
+  for d in $HOME/.venv/*; do
+    if [ -d $d ]; then
+      alias v-$(basename $d)="source $HOME/.venv/$(basename $d)/bin/activate"
+      alias 'pip3 install'="pip3 install $@ && echo Updating requirements.txt && pip freeze > $(basename $d)/requirements.txt"
+    fi
+  done
+  alias d='deactivate'
+fi

@@ -1,0 +1,2 @@
+alias k9sc='k9s --context'
+alias k9sn='k9s -n'

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+alias d="docker"
+
+dlist() {
+	docker ps;
+}
+
+dlistall() {
+	docker ps -a;
+}
+
+dlistimages() {
+	docker images -a;
+}
+
+dcleanup() {
+	docker rm $(docker ps -a -q)
+}
+
+dcleanupimages() {
+	docker rmi $(docker images -q)
+}

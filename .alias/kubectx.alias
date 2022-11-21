@@ -1,0 +1,8 @@
+alias kctx='kubie ctx $@'
+alias kz='kubie ctx'
+alias kns='kubie ns'
+
+# Krew shortcuts
+alias kkki='kubectl krew install'
+alias kkks='kubectl krew search'
+alias kkku='kubectl krew update'
