@@ -1,7 +1,4 @@
-export EDITOR='vim'
-export ZSH=$HOME/.oh-my-zsh
-export GOPATH=$HOME/go
-export BROWSER="/usr/bin/brave"
+source $HOME/.exports
 # thefuck
 eval $(thefuck --alias)
 
@@ -169,23 +166,11 @@ for f in $(find $HOME/.alias/*.alias -type f); do source $f; done
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 # Flux completion
 if [ $commands[flux] ]; then source <(flux completion zsh); fi
-# Gitops Toolkit (FluxV2)
-# if [ $commands[gotk] ]; then source <(gotk completion); fi
 # Helm autocompletion
 if [ $commands[helm] ]; then source <(helm completion zsh); fi
-
-# Source the Ruby gems
-PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-
-# Nielsen scripts directory
-PATH="$PATH:$HOME/work/nlsn/nielsen-bin"
 
 # Custom scripts
 PATH="$PATH:$HOME/.scripts/"
 
-# Kubectl Krew PATH https://github.com/kubernetes-sigs/krew
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # Direnv Nielsen stuff
 eval "$(direnv hook $SHELL)"
-# source $HOME/src/bash/1pass-signin.sh

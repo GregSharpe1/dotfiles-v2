@@ -1,0 +1,5 @@
+export SHELL="/bin/zsh"
+export EDITOR='vim'
+export ZSH=$HOME/.oh-my-zsh
+export GOPATH=$HOME/go
+export BROWSER="/usr/bin/brave"
