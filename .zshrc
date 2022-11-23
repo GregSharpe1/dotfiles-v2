@@ -171,6 +171,8 @@ if [ $commands[helm] ]; then source <(helm completion zsh); fi
 
 # Custom scripts
 PATH="$PATH:$HOME/.scripts/"
+# Work nonsense
+PATH="$PATH:$HOME/bin"
 
 # Direnv Nielsen stuff
 eval "$(direnv hook $SHELL)"
