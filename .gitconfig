@@ -1,0 +1,109 @@
+
+[user]
+	email = git+me@gregsharpe.co.uk
+	name = Greg Sharpe
+
+### Merging helper
+[merge]
+	summary = true
+	tool = vimdiff
+
+[mergetool]
+	keepBackup = true
+	# prompt = false
+
+[mergetool "vimdiff"]
+	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+### Diff helper
+
+[diff]
+	tool = vimdiff
+
+[difftool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE
+
+[alias]
+	uncommit = reset HEAD~1 --mixed
+	tree	= log --graph --decorate --abbrev-commit --branches --tags --remotes --date=short --pretty=format:'%C(yellow)%h%Creset-%C(cyan)(%ai%x08%x08%x08%x08%x08%x08) %ar%Creset%C(bold green)%d%Creset %s %Creset %C(cyan)[%cn]%Creset'
+	lg		= log --stat --abbrev-commit --show-signature
+	gpg		= log --show-signature
+
+	tags = !"git for-each-ref \
+		--sort=creatordate \
+		--format '%(refname)_,,,_%(creatordate:format:%Y-%m-%d %H:%M)_,,,_%(committername)%(taggername)_,,,_%(subject)' refs/tags \
+		| sed 's|^refs/tags/||g' \
+		| awk 'BEGIN { FS = \"_,,,_\"  } ; { \
+			printf \"%-20s %-18s %-25s %s\\n\", $2, $1, $4, $3  \
+		}'"
+
+	# List files (indexed)
+	ls		= ls-tree --name-only -r HEAD
+
+	# List files (ignored)
+	ign		= ls-files -o -i --exclude-standard
+	ls-ign	= ls-files -o -i --exclude-standard
+	ls-ignored	= ls-files -o -i --exclude-standard
+
+	# List files (modified)
+	ls-mod	= ls-files -m
+	ls-modified	= ls-files -m
+
+	# List files (deleted)
+	ls-del	= ls-files -d
+	ls-deleted = ls-files -d
+
+	# List files (unmerged)
+	ls-unm	= ls-files -u
+	ls-unmerged = ls-files -u
+
+  chckm = checkout master
+  chck = checkout -
+  mm = merge master
+  dm = diff master
+
+  p = pull
+  pp = push
+
+### Git init templator
+#
+# git config --global init.templateDir ~/.git-template
+# pre-commit init-templatedir -t pre-commit ~/.git-template
+#
+[init]
+	templateDir = /home/greg/.git-template
+
+### Git commit
+[commit]
+	gpgsign = false
+
+### GPG related
+[gpg]
+	program = gpg
+
+### Colour Helper
+[color]
+	ui = true
+
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+
+[includeIf "gitdir:~/work/roku/"]
+  path = ~/.gitconfig.d/roku
+
+[pull]
+	rebase = false
